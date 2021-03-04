@@ -13,7 +13,7 @@ function replaceNumberWithLetter(phrase) {
 }
 
 window.exercise03 = function () {
-  var phrase = "T35t3 d3 35t4g1o";
+  const phrase = "T35t3 d3 35t4g1o";
   console.log("resultado ex3: ");
   console.log(replaceNumberWithLetter(phrase));
 };
