@@ -26,7 +26,46 @@ Faça uma função que receba 2 parâmetros: um array de movies e um array de ac
 ]
 
  */
+const movies = [
+  { id: 1, name: "Joker" },
+  { id: 2, name: "Parasite" },
+  { id: 3, name: "Avengers" },
+  { id: 4, name: "Her" }
+];
+const actors = [
+  { id: 1, name: "Cho Yeo-jeong", movie_ids: [2] },
+  { id: 2, name: "Robert Downey Jr.", movie_ids: [3] },
+  { id: 3, name: "Joaquin Phoenix", movie_ids: [1, 4] },
+  { id: 4, name: "Scarlett Johansson", movie_ids: [3] }
+];
 
-window.exercise10 = function() {
+function getActorsNames(movieId, actors) {
+  var actorsInTheMovie = [];
+
+  for (var actor of actors) {
+    if (actor.movie_ids.includes(movieId)) {
+      actorsInTheMovie.push(actor.name);
+    }
+  }
+
+  return actorsInTheMovie;
+}
+
+function linkActorsToMovies(actors, movies) {
+  const MovieByActors = movies.map(function (movie) {
+    return {
+      id: movie.id,
+      name: movie.name,
+      actors: getActorsNames(movie.id, actors)
+    };
+  });
+  for (var movie of MovieByActors) {
+    console.log(movie);
+  }
+  return MovieByActors;
+}
+
+window.exercise10 = function () {
   console.log("resultado ex10: ");
+  linkActorsToMovies(actors, movies);
 };
